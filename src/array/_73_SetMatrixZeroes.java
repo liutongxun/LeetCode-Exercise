@@ -51,60 +51,6 @@ public class _73_SetMatrixZeroes {
         }
     }
 
-    public void setZeroes2(int[][] matrix) {
-        boolean firstRowZero = false;
-        boolean firstColumnZero = false;
-
-        // Check if the first row has a zero
-        for (int j = 0; j < matrix[0].length; j++) {
-            if (matrix[0][j] == 0) {
-                firstRowZero = true;
-                break;
-            }
-        }
-
-        // Check if the first column has a zero
-        for (int i = 0; i < matrix.length; i++) {
-            if (matrix[i][0] == 0) {
-                firstColumnZero = true;
-                break;
-            }
-        }
-
-        // Use first row and first column to mark zero rows and columns
-        for (int i = 1; i < matrix.length; i++) {
-            for (int j = 1; j < matrix[0].length; j++) {
-                if (matrix[i][j] == 0) {
-                    matrix[i][0] = 0;  // Mark row
-                    matrix[0][j] = 0;  // Mark column
-                }
-            }
-        }
-
-        // Zero out cells based on the marks in the first row and column
-        for (int i = 1; i < matrix.length; i++) {
-            for (int j = 1; j < matrix[0].length; j++) {
-                if (matrix[i][0] == 0 || matrix[0][j] == 0) {
-                    matrix[i][j] = 0;
-                }
-            }
-        }
-
-        // Zero out the first row if necessary
-        if (firstRowZero) {
-            for (int j = 0; j < matrix[0].length; j++) {
-                matrix[0][j] = 0;
-            }
-        }
-
-        // Zero out the first column if necessary
-        if (firstColumnZero) {
-            for (int i = 0; i < matrix.length; i++) {
-                matrix[i][0] = 0;
-            }
-        }
-    }
-
     // Helper method to print the matrix
     public static void printMatrix(int[][] matrix) {
         for (int[] row : matrix) {
